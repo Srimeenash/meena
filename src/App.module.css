@@ -1,0 +1,1937 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================================
+   APP LAYOUT
+================================ */
+.app {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background: #e7e7eb;
+  padding: 25px 0;
+  box-shadow: #000000;
+}
+
+.sidebarItem {
+  color: #041a63;
+  padding: px 28px;
+  font-weight: 1000;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.icon {
+  width: 40px;   /* increase for better UI */
+  height: 40px;
+  margin-bottom: 8px;
+    filter: none; /* reset any filters */
+  fill: #007bff; /* your blue color */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: white;
+  color: #132a96;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+/* Text items */
+.sidebar div {
+  padding: 12px 20px;
+  font-size: 20px;   /* text size */
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+/* Hover only */
+.sidebar div:hover {
+  background: rgba(15, 6, 6, 0.15);
+}
+
+
+/* STEP ACTIVE COLORS */
+
+.active {
+  background: #0052cc !important;
+  color: #fff !important;
+  border: 2px solid #0052cc;
+;
+  transform: scale(1.05);
+  transition: all 0.3s ease; /* ✅ ADD THIS */
+}
+
+.active img {
+  filter: brightness(0) invert(1);
+}
+
+.active span {
+  color: #fff;
+  font-weight: 600;
+}
+
+.progressBox:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(241, 239, 239, 0.15);
+}
+
+.sidebarItem:hover {
+  background: rgba(23, 78, 199, 0.1);
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+.main {
+  margin-left: 250px;
+  padding: 30px;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+}
+
+/* ================================
+   HEADER
+================================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: poppins;
+}
+
+.headerRight span {
+  background: #e9ecef;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 13px;
+}
+
+.uploadBtn {
+  background: #0052cc;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* ================================
+   PROGRESS - 4 SAME BOXES
+================================ */
+.progressRow {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.progressBox::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 7px;
+  height: 100%;
+
+  background: #0052cc;
+  border-radius: 12px ;
+
+  transform: scaleX(0);              /* hidden */
+  transform-origin: left;            /* start from top */
+  transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.completed::before,
+.active::before {
+  height: 100%;                 /* 👈 grow down slowly */
+  opacity: 1;
+  transform: scaleX(1);       
+}
+.progressBox::before {
+  height: 0;
+}
+
+.completed::before,
+.active::before {
+  height: 100%;
+  opacity: 1;
+}
+
+.completed::before,
+.active::before {
+  opacity: 1;
+}
+
+.progressBox img,
+.progressBox span {
+  position: relative;
+  z-index: 2;  /* 🔥 this fixes your issue */
+}
+
+.progressBox {
+  border-radius: 12px;
+}
+
+/* keep text visible */
+.progressBox span,
+.progressBox img {
+  position: relative;
+  z-index: 1;
+  color: #0052cc;
+
+}
+
+
+.progressBox {
+  flex: 1;
+  min-width: 180px;
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background: #dcdddb;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+
+  font-size: 25px;
+  font-weight: 600;
+  color: #0549af;
+;
+  z-index: 1;
+  transition-delay: inherit;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.timetableTable {
+  animation: fadeDown 0.3s ease;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.progressBox:active {
+  transform: scale(0.97);
+}
+
+/* .progressBox img {
+  filter: brightness(0) invert(1);
+} */
+.completed span {
+  color: #0052cc;
+
+}
+
+.progressBox img {
+  filter: none;
+}
+
+.progressBox img {
+  filter: none !important;
+}
+.icon {
+  font-size: 34px;   /* 🔥 BIG icon */
+  color: #0052cc;
+}
+/* All SVG or image icons inside progressBox and elsewhere */
+.progressBox img,
+.progressBox .icon,
+.eligibilityBox .icon,
+.docBox .icon {
+    width: 40px;       /* size */
+    height: 40px;
+    color: #0052cc;    /* fallback for font icons */
+    fill: #0052cc;     /* SVG fill */
+    filter: none !important; /* remove any invert/brightness filters */
+    transition: all 0.3s ease;
+}
+
+.completed img,
+.active img {
+  filter: invert(35%) sepia(95%) saturate(4000%) hue-rotate(198deg) brightness(100%) contrast(100%);
+}
+/* Hover only */
+.progressBox:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+/* ================================
+   SECTIONS
+================================ */
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+
+
+.inputLong {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #e9ecef;
+  background: #fafbfc;
+  border-radius: 6px;
+}
+
+/* ================================
+   DOCUMENT BOXES
+================================ */
+.docRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.docBox {
+  flex: 1;
+  min-width: 180px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  text-align: center;
+}
+
+.statNum {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0052cc;
+  margin-top: 8px;
+}
+
+/* ================================
+   ELIGIBILITY
+================================ */
+/* Eligibility row */
+.eligibilityRow {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  justify-content: center; /* center row horizontally */
+}
+
+/* Individual eligibility box */
+.eligibilityBox {
+  flex: 1;                /* equal width */
+  height: 120px;
+  background: #e1e1ec;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+.eligibilityBox::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 7px;
+  height: 100%;
+
+  border-radius: 10px 0 0 10px;
+
+  opacity: 0;                 /* 👈 hidden initially */
+  transform: scaleX(0);       /* 👈 collapsed */
+  transform-origin: top;
+
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.showColor::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.boxBlue::before { background: #82b8e4; }
+.boxGreen::before { background: #9fc49d; }
+.boxYellow::before { background: #f2f7b4; }
+.boxPink::before { background: #e7baba; }
+.boxPurple::before { background: #c4b8e7; }
+/* Hover effect same as progress box */
+.eligibilityBox:hover {
+  transform: translateX(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* Icon styling */
+.eligibilityBox .icon {
+  font-size: 34px; /* match progress box icon size */
+  color: #0052cc;
+}
+
+/* Percentage styling */
+.eligibilityBox .statNum {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0052cc;
+  margin-top: 8px;
+  text-align: center;
+}
+.eligBox {
+  flex: 1;
+  min-width: 200px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  font-size: 13px;
+}
+
+.subList {
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+/* ================================
+   BID SECTION
+================================ */
+.bidSection {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+}
+
+.bidScoresRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.bidScoresRow div {
+  flex: 1;
+  min-width: 150px;
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  font-size: 14px;
+}
+
+.bidScoresRow span {
+  float: right;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.bidScoresRow div:nth-child(3) span {
+  color: #dc3545;
+}
+
+/* ================================
+   INPUT
+================================ */
+.inputFull {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #e9ecef;
+  background: #fafbfc;
+  border-radius: 6px;
+}
+
+/* ================================
+   TEXT SECTIONS
+================================ */
+.topReasons,
+.risks,
+.nextStep {
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.risks div {
+  color: #dc3545;
+}
+
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+  .main {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+
+
+.tenderId {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  background: #e9ecef;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+
+/* Clickable title */
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #132A96;  /* blue color */
+  
+}
+
+/* ================================
+   TENDER TIMETABLE BOX - PROFESSIONAL
+================================ */
+.timetableBox {
+  width: 100%;               /* fits container */
+  max-width: 1590px;         /* maximum width */
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  margin: 20px auto;         /* center horizontally */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  overflow-x: auto;          /* horizontal scroll if content too big */
+  overflow-y: hidden;
+
+  transition: all 0.3s ease;
+}
+
+/* Clickable title aligned left */
+.timetableBox .sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  cursor: pointer;
+  text-align: left;          /* title left-aligned */
+  transition: background 0.25s ease;
+}
+
+.timetableBox .sectionTitle:hover {
+  background: #e9ecef;
+}
+
+/* Scrollable content inside */
+.timetableContent {
+  width: 100%;               /* match box width */
+  min-width: 100%;
+  max-width: 1200px;
+  height: 120px;             /* fixed height */
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #495057;
+  line-height: 1.6;
+  border-top: 1px solid #e9ecef;
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  overflow-x: auto;          /* horizontal scroll if needed */
+  overflow-y: auto;          /* vertical scroll if content exceeds height */
+}
+
+/* Scrollbar Styling */
+.timetableContent::-webkit-scrollbar {
+  height: 6px;               /* horizontal scrollbar */
+  width: 6px;                /* vertical scrollbar */
+}
+
+.timetableContent::-webkit-scrollbar-thumb {
+  background: #adb5bd;
+  border-radius: 10px;
+}
+
+.timetableContent::-webkit-scrollbar-track {
+  background: #f1f3f5;
+  border-radius: 10px;
+}
+
+/* Table inside timetable */
+.timetableTable {
+  width: 100%;               /* table fills box width */
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 14px;
+}
+
+.timetableTable td {
+  padding: 8px 12px;
+  border-bottom: 1px dashed #dee2e6;
+  color: #495057;
+}
+
+.timetableTable td:first-child {
+  font-weight: 600;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.timetableTable tr:last-child td {
+  border-bottom: none;
+}
+
+/* Section heading aligned left */
+.sectionHeader {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 12px;   /* spacing between title and boxes */
+  text-align: left;      /* aligns text to left */
+  color: #132A96;
+}
+
+/* Document boxes styled like progress boxes */
+.docBox {
+  flex: 1;
+  min-width: 180px;
+  height: 180px;               /* same height as progress boxes */
+  
+  display: flex;
+  flex-direction: column;      /* icon/top and text/bottom layout */
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+/* Optional hover effect */
+.docBox:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Number inside the box */
+.statNum {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0052cc;
+  margin-top: 8px;
+}
+
+
+
+/* Single eligibility box */
+/* Single eligibility box */
+.eligibilityBox {
+  display: flex;
+  justify-content: space-between; /* left-right alignment */
+  align-items: center;
+  padding: 20px 25px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  width: 90%;                /* box width */
+  max-width: 1590px;         /* optional maximum width */
+  margin: 0 auto 20px auto;  /* center horizontally + bottom spacing */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+/* Left label */
+.eligibilityLabel {
+  font-weight: 500;
+}
+
+/* Right value */
+.eligibilityValue {
+  font-weight: 700;
+  color: #0052cc;
+}
+
+
+
+/* Hover effect */
+.progressBox:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* Icon styling */
+.progressBox .icon {
+  font-size: 34px;
+  color: #0052cc;
+}
+
+/* Percentage styling */
+.statNum {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0052cc;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* Row container */
+.eligibilityRow {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  justify-content: center; /* center boxes horizontally */
+}
+
+/* Single eligibility box */
+.eligibilityBoxes {
+  display: flex;
+  justify-content: space-between; /* left-right alignment */
+  align-items: center;
+  padding: 20px 25px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  width: 80%;                /* box width */
+  max-width: 1590px;         /* optional maximum width */
+  margin: 0 auto 20px auto;  /* center horizontally + bottom spacing */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Container row for eligibility boxes */
+.eligibilityRow {
+  display: flex;
+  gap: 15px;             /* spacing between boxes */
+  overflow-x: auto;      /* scroll if too many boxes */
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+/* Individual eligibility box */
+.eligBox {
+  flex: 0 0 250px;       /* fixed width for each box */
+  height: 100px;         /* fixed height */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.eligBox:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+
+
+/* Individual eligibility box */
+.eligibilityItem {
+  width: 1590px;            /* fixed width */
+  height: 40px;            /* fixed height */
+  width: 100%;
+  
+  display: flex;
+  align-items: center;     
+  justify-content: flex-start; /* text aligned left inside box */
+  
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  
+  padding-left: 15px;      /* space before the > icon */
+}
+.eligibilityWrapper {
+  width: 100%;                  /* full width of page */
+  display: flex;
+  justify-content: center;      /* center the accordion */
+  margin: 20px 0;               /* optional vertical spacing */
+}
+
+.eligibilityList {
+  width: 1450px;                /* fixed width for accordion */
+  display: flex;
+  flex-direction: column;       /* stack items vertically */
+  gap: 15px;                    /* spacing between items */
+}
+.eligibilityItem {
+  width: 100%;                  /* fill the 1500px width */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* left-aligned text */
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  padding-left: 15px;           /* spacing before the > icon */
+  cursor: pointer;
+}
+
+
+.eligibilityContent {
+  margin-top: 5px;
+  padding: 10px;
+  background-color: #e8e8e8;
+  border-radius: 6px;
+}
+
+/* Title inside box */
+.itemTitle {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  transition: background 0.2s;
+}
+
+.itemTitle:hover {
+  background: #e0e0e0;
+}
+
+/* Paragraph below the box */
+.itemContent {
+  padding: 12px 15px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #495057;
+  border-left: 1px solid #e9ecef;
+  border-right: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 0 0 10px 10px;
+  background: #fdfdfd;
+}
+
+.bidScoresRow {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* wrap if screen is small */
+  margin-bottom: 20px;
+}
+
+.bidBox {
+  flex: 1;                   /* each box takes equal space */
+  min-width: 200px;          /* avoid too small boxes */
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.bidIcon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.bidLabel {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.bidProgress {
+  width: 100%;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.bidProgressFill {
+  height: 100%;
+  background: #0d6efd; /* bootstrap blue */
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.bidPercent {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.bidScoresRow {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  gap: 10px;
+}
+
+.bidBox {
+  flex: 1;
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.bidIcon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.bidLabel {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.bidProgress {
+  background: #e0e0e0;
+  border-radius: 8px;
+  height: 10px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.bidProgressFill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.5s ease-in-out;
+}
+
+.bidPercent {
+  font-weight: 600;
+}
+
+.droneBox {
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  border: 2px solid #c0b9b9;   /* black border */
+  color: #28a745;           /* green text */
+  font-weight: 600;         /* optional for better look */
+}
+
+.bidRowNew {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+.bidCard {
+  flex: 1;
+
+  height: 170px;            /* 🔥 increased height */
+  padding: 10px;
+
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 🔥 center content vertically */
+  align-items: center;
+
+  text-align: center;
+}
+
+.bidCardIcon {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.bidCardLabel {
+  font-size: 14px;
+  font-weight: 600;
+}
+.bidCardValue {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.bidTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 22px;
+  margin: 25px 0;
+}
+
+.bidTitle span {
+  font-weight: 1000;
+  font-size: 56px;
+  color: #0a0808;
+  margin: 0 15px;
+}
+
+.bidTitle::before,
+.bidTitle::after {
+  content: "";
+  width: 500px;              /* 🔥 control line length */
+  border-bottom: 2px solid #000000;
+}
+
+.eligibilityBoxess {
+  display: flex;
+  justify-content: center;   /* ✅ center horizontally */
+  align-items: center;       /* ✅ center vertically */
+  text-align: center;
+
+  padding: 10px 20px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 1590px;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  font-size: 22px;
+  font-weight: 700;
+  color: #41af37;
+}
+
+.bidTitles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 22px;
+  margin: 25px 0;
+}
+
+.bidTitles span {
+  font-weight: 1000;
+  font-size: 56px;
+  color: #0a0808;
+  margin: 0 15px;
+}
+
+.bidTitles::before,
+.bidTitles::after {
+  content: "";
+  width: 560px;              /* 🔥 control line length */
+  border-bottom: 2px solid #000000;
+}
+
+.bigBox {
+  width: 90%;
+  max-width: 1590px;
+  margin: 0 auto 20px auto;
+
+  padding: 20px;
+  background: #cadfd3;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.bigBoxContent {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.bigBoxContent div {
+  margin-bottom: 8px; /* spacing between points */
+}
+
+.bidTitless {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 22px;
+  margin: 25px 0;
+}
+
+.bidTitless span {
+  font-weight: 1000;
+  font-size: 56px;
+  color: #0a0808;
+  margin: 0 15px;
+}
+
+.bidTitless::before,
+.bidTitless::after {
+  content: "";
+  width: 610px;              /* 🔥 control line length */
+  border-bottom: 2px solid #000000;
+}
+
+.bigBoxes {
+  width: 90%;
+  max-width: 1590px;
+  margin: 0 auto 20px auto;
+
+  padding: 20px;
+  background: #e9d5d3;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.bigBoxesContent {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.bigBoxesContent div {
+  margin-bottom: 8px; /* spacing between points */
+}
+
+
+.bidTitlesss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 22px;
+  margin: 25px 0;
+}
+
+.bidTitlesss span {
+  font-weight: 1000;
+  font-size: 56px;
+  color: #0a0808;
+  margin: 0 15px;
+}
+
+.bidTitlesss::before,
+.bidTitlesss::after {
+  content: "";
+  width: 580px;              /* 🔥 control line length */
+  border-bottom: 2px solid #000000;
+}
+
+
+
+.eligibilityBoxesss {
+  display: flex;
+  justify-content: left;   /* ✅ center horizontally */
+  align-items: left;       /* ✅ center vertically */
+  text-align: left;
+
+  padding: 8px 20px;
+  background: #fff;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 1590px;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #030303;
+}
+
+
+/* ================================
+   BUTTON
+================================ */
+.analyzeBtn {
+  width: 25%;
+  background: #267a39;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 15px auto 0 auto;   /* ✅ centers horizontally */
+  display: block;             /* ✅ required for margin auto */
+}
+
+
+.tickWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical (optional) */
+  margin-top: 20px;
+}
+
+.tickCircle {
+  width: 70px;
+  height: 70px;
+  background-color: #267a39;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.targetSection {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.scrollBox {
+  margin-top: 15px;
+  padding: 15px 20px;
+  max-height: 250px;           /* reasonable height */
+  overflow-y: auto;            /* vertical scrolling */
+  border-radius: 12px;         /* rounded corners */
+  background: #ffffff;         /* clean white background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  border: 1px solid #e0e0e0;  /* light border */
+  transition: transform 0.2s ease;
+}
+
+.scrollBox:hover {
+  transform: translateY(-2px); /* subtle hover lift effect */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.scrollBox h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #132A96;              /* match your theme */
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 6px;
+}
+
+.scrollBox ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.scrollBox li {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  background: #f0f4ff;         /* soft blue background for items */
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.scrollBox li:hover {
+  background: #dbe4ff;         /* highlight on hover */
+}
+
+/* ==========================
+  Eligibility Row (5 boxes)
+========================== */
+.eligibilityRow {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  gap: 15px;
+}
+
+.progressBox {
+  flex: 1;
+  background: #f0f0f0;
+  border-radius: 12px;
+  padding: 20px 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.progressBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.progressBox img.bgIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+/* Dynamic box backgrounds */
+.box0 {
+  background: #e3f2fd; /* Light Blue */
+}
+.box1 {
+  background: #e8f5e9; /* Light Green */
+}
+.box2 {
+  background: #fff3e0; /* Light Orange */
+}
+.box3 {
+  background: #fce4ec; /* Light Pink */
+}
+.box4 {
+  background: #ede7f6; /* Light Purple */
+}
+
+.statNum {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 8px;
+  color: #333;
+}
+
+/* ==========================
+  Eligibility List (Details)
+========================== */
+.eligibilityWrapper {
+  margin-top: 20px;
+}
+
+.eligibilityList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eligibilityItem {
+  background: #fafafa;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 500;
+}
+
+.eligibilityItem:hover {
+  background: #f0f0f0;
+}
+
+.eligibilityContent {
+  padding: 10px 15px;
+  margin-top: 5px;
+  background: #f9f9f9;
+  border-left: 4px solid #132a96;
+  border-radius: 4px;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Initial hidden state for animation */
+.progressBox {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s forwards;
+}
+
+/* Fade-up keyframes */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay each box sequentially */
+.box0 {
+  animation-delay: 0.2s;
+  background: #e3f2fd;
+}
+.box1 {
+  animation-delay: 0.4s;
+  background: #e8f5e9;
+}
+.box2 {
+  animation-delay: 0.6s;
+  background: #fff3e0;
+}
+.box3 {
+  animation-delay: 0.8s;
+  background: #fce4ec;
+}
+.box4 {
+  animation-delay: 1s;
+  background: #ede7f6;
+}
+/* Initial hidden state + fade-up animation */
+.progressBox {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s forwards;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.9s ease, box-shadow 0.8s ease;
+  cursor: pointer;
+}
+
+/* Fade-up keyframes */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sequential delays + background colors */
+.box0 {
+  animation-delay: 0.5s;
+  background: #e3f2fd; /* light blue */
+}
+.box1 {
+  animation-delay: 0.10s;
+  background: #e8f5e9; /* light green */
+}
+.box2 {
+  animation-delay: 0.15s;
+  background: #fff3e0; /* light orange */
+}
+.box3 {
+  animation-delay: 0.20s;
+  background: #fce4ec; /* light pink */
+}
+.box4 {
+  animation-delay: 0.25s;
+  background: #ede7f6; /* light purple */
+}
+
+/* Hover effect: lift + shadow */
+.progressBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth color transition for the first box */
+/* Container for eligibility boxes */
+.eligibilityContainer {
+  display: flex;
+  gap: 18px; /* spacing between boxes */
+  justify-content: center; /* center horizontally */
+  flex-wrap: wrap; /* wrap on smaller screens */
+  margin-top: 15px;
+}
+
+/* Each box like progress box */
+/* Base box styles */
+.eligibilityBox {
+  flex: 0 0 300px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  width: 20PX;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  background: #fff; /* start white */
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  /* Animation */
+ 
+}
+
+/* Hover effect */
+.eligibilityBox:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+
+
+/* Icon inside the box */
+.eligibilityIcon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Title of the box */
+.eligibilityTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0052cc;
+  text-align: center;
+}
+
+/* Percentage / stat */
+.eligibilityPercent {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0052cc;
+}
+
+/* Optional paragraph below box */
+.eligibilityBox p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #495057;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .eligibilityBox {
+    flex: 0 0 160px;
+    height: 160px;
+  }
+
+  .eligibilityIcon {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Container with fixed height and scroll */
+.eligibilityDetailsContainer {
+  max-height: 300px; /* or whatever height you want */
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Optional: style the scrollbar */
+.eligibilityDetailsContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.eligibilityDetailsContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+
+.eligibilityDetailsContainer::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Each item styling */
+.eligibilityItem {
+  padding: 8px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.eligibilityContent {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.eligibility-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.eligibility-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: background 0.3s;
+}
+
+.eligibility-item:hover {
+  background-color: #eef2ff;
+}
+
+.eligibility-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.eligibility-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  margin-top: 4px;
+}
+
+.eligibility-content.visible {
+  max-height: 200px; /* adjust as needed */
+  opacity: 1;
+}
+
+.eligibilityList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.eligibilityItem {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: background 0.3s;
+}
+
+.eligibilityItem:hover {
+  background-color: #eef2ff;
+}
+
+.eligibilityTitle {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.eligibilityContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  margin-top: 4px;
+}
+
+.visible {
+  max-height: 500px; /* adjust based on content size */
+  opacity: 1;
+}
+
+/* Container for the list */
+.customEligibilityList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Each eligibility item */
+.customEligibilityItem {
+  cursor: pointer;
+  padding: 8px 8px;
+  background-color: #e1e1ec;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.customEligibilityItem:hover {
+  background-color: #e6f0ff;
+}
+
+/* Title of each item */
+.customEligibilityTitle {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Hidden content initially */
+.customEligibilityContent {
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 6px;
+  padding: 0;
+  font-size: 14px;
+  color: #333;
+  background-color: #e6f0ff;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+/* When visible, expand the content */
+.customVisible {
+  max-height: 500px; /* adjust according to content length */
+  padding: 8px 12px;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;       /* Full viewport height */
+  width: 1590px;        /* Full viewport width */
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+/* Header at top */
+.chatHeader {
+  padding: 15px 20px;
+  background-color: #f7f8f8;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Messages area */
+.messages {
+  flex: 1;             /* Take remaining space */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.message {
+  max-width: 60%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  word-wrap: break-word;
+}
+
+.left {
+  background-color: #e0e0e0;
+  align-self: flex-start;
+}
+
+.right {
+  background-color: #132a96;
+  color: white;
+  align-self: flex-end;
+}
+
+/* Input box at bottom */
+.inputArea {
+  display: flex;
+  gap: 10px;
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #132a96;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0f2075;
+}
+
+
+.eligibilityContainers {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+/* Shared box styles - bigger width */
+.boxEligibility,
+.boxStrategic,
+.boxProfitability,
+.boxRisk,
+.boxCompetitive {
+  flex: 1;
+  min-width: 200px;   /* bigger */
+  max-width: 350px;   /* bigger */
+  height: 180px;      /* slightly taller */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #fff;
+  text-align: center;
+
+}
+
+/* Icon inside box */
+.eligibilityIcon {
+  width: 50px;    /* bigger icon */
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+/* Title inside box */
+.eligibilityTitle {
+  font-weight: 600;
+  font-size: 18px;   /* slightly bigger text */
+  margin-bottom: 5px;
+}
+
+/* Percent inside box */
+.eligibilityPercent {
+ /* slightly bigger */
+  font-weight: bold;
+}
+
+
+
+
+/* Responsive for smaller screens */
+@media (max-width: 1024px) {
+  .eligibilityContainers {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .boxEligibility,
+  .boxStrategic,
+  .boxProfitability,
+  .boxRisk,
+  .boxCompetitive {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.boxEligibility,
+.boxStrategic,
+.boxProfitability,
+.boxRisk,
+.boxCompetitive {
+  position: relative;
+  background: #fff;   /* keep box white */
+  color: #000;
+}
+
+/* LEFT EDGE */
+.boxEligibility::before,
+.boxStrategic::before,
+.boxProfitability::before,
+.boxRisk::before,
+.boxCompetitive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 7px;
+  height: 100%;
+
+  border-radius: 12px 0 0 12px;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s ease;
+}
+
+.boxEligibility::before { background: #add8ad; }
+.boxStrategic::before { background: #c2c6cc; }
+.boxProfitability::before { background: #95cce6; }
+.boxRisk::before { background: #d49e9d; }
+.boxCompetitive::before { background: #ebd89f; }
+
+
+.showColor::before {
+  transform: scaleX(1);
+}
